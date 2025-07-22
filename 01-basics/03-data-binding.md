@@ -2,6 +2,18 @@
 
 Vue의 반응형 시스템은 React의 상태 관리와 달리 **직접 변경이 가능**하고 **자동으로 UI가 업데이트**됩니다! React 개발자라면 "이게 더 편하네?"라고 느낄 거예요.
 
+**🎯 학습 목표**
+- React의 불변성 vs Vue의 가변성 차이점 이해
+- `ref`, `reactive`, `computed`, `watch`의 적절한 사용법 습득
+- 양방향 데이터 바인딩(`v-model`)의 강력함 체험
+- 실무에서 자주 사용하는 반응형 패턴들 익히기
+
+**💡 왜 Vue의 반응형 시스템이 특별할까요?**
+- **자연스러운 변경**: JavaScript 객체를 다루듯이 자연스럽게 상태 변경
+- **자동 최적화**: Vue가 내부적으로 의존성 추적해서 필요한 부분만 업데이트
+- **적은 코드**: `useState`, `useEffect` 없이도 복잡한 상태 로직 구현
+- **성능**: Proxy 기반으로 매우 효율적인 변경 감지
+
 ## 🎯 기본 데이터 바인딩
 
 ### React vs Vue 상태 관리
@@ -38,15 +50,23 @@ function UserProfile() {
 }
 ```
 
-**Vue (ref + reactive)**
+**Vue (ref + reactive) - 직접 변경 가능**
 ```vue
 <template>
   <div>
     <h1>{{ user.name }}</h1>
     <p>나이: {{ user.age }}</p>
     <p>이메일: {{ user.email }}</p>
+    
+    <!-- ✅ 메서드 호출 방식 -->
     <button @click="updateName('새이름')">이름 변경</button>
+    
+    <!-- ✅ 직접 변경 방식 (Vue에서만 가능!) -->
     <button @click="user.age++">나이 증가</button>
+    
+    <!-- 🔍 ref 값 표시 (.value는 템플릿에서 자동 해제) -->
+    <p>방문 횟수: {{ visitCount }}</p>
+    <button @click="visitCount++">방문 횟수 증가</button>
   </div>
 </template>
 

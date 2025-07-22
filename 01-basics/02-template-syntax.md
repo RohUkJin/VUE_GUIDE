@@ -2,11 +2,25 @@
 
 Vue의 템플릿 문법은 React의 JSX와 비교해서 훨씬 HTML에 가깝습니다! React 개발자라면 "어? 이게 더 직관적이네!"라고 느낄 거예요.
 
+**🎯 학습 목표**
+- HTML 기반 템플릿 문법의 장점 이해
+- JSX와 Vue 템플릿의 차이점 명확히 파악
+- Vue의 디렉티브(v-if, v-for, v-model 등) 활용법 습득
+- 실무에서 자주 사용하는 패턴들 익히기
+
+**💡 왜 템플릿 문법을 배워야 할까요?**
+- **HTML 친화적**: 기존 HTML을 거의 그대로 사용 가능
+- **디자이너 협업**: HTML/CSS를 아는 디자이너도 쉽게 이해
+- **선언적**: "어떻게"보다는 "무엇을" 표현하는데 집중
+- **직관적**: 코드를 읽으면 바로 결과를 예상할 수 있음
+
 ## 🎯 기본 템플릿 vs JSX
 
-### 텍스트 보간 (Text Interpolation)
+### 텍스트 보간 (Text Interpolation): 데이터를 화면에 표시하기
 
-**React (JSX)**
+React의 `{}`와 Vue의 `{{ }}` 모두 JavaScript 표현식을 HTML에 삽입하는 기능이지만, Vue가 더 명시적입니다.
+
+**React (JSX) - 단일 중괄호**
 ```jsx
 function Welcome({ name, age, isOnline }) {
   return (
@@ -14,19 +28,28 @@ function Welcome({ name, age, isOnline }) {
       <h1>안녕하세요, {name}님!</h1>
       <p>나이: {age}살</p>
       <p>상태: {isOnline ? '온라인' : '오프라인'}</p>
+      
+      {/* 복잡한 표현식도 가능 */}
+      <p>소개: {name?.toUpperCase() || '익명'}</p>
     </div>
   );
 }
 ```
 
-**Vue (Template)**
+**Vue (Template) - 이중 중괄호**
 ```vue
 <template>
   <div>
-    <!-- 이중 중괄호로 텍스트 보간 -->
+    <!-- {{ }}는 텍스트 전용! HTML은 렌더링 안됨 -->
     <h1>안녕하세요, {{ name }}님!</h1>
     <p>나이: {{ age }}살</p>
     <p>상태: {{ isOnline ? '온라인' : '오프라인' }}</p>
+    
+    <!-- 복잡한 표현식도 가능 -->
+    <p>소개: {{ name?.toUpperCase() || '익명' }}</p>
+    
+    <!-- JavaScript 기본 객체 메서드 사용 가능 -->
+    <p>가입일: {{ new Date().toLocaleDateString() }}</p>
   </div>
 </template>
 
@@ -40,6 +63,31 @@ export default {
 }
 </script>
 ```
+
+**🔍 주요 차이점:**
+- **React**: `{}` 안에 모든 JavaScript 코드 가능 (컴포넌트, 함수 호출 등)
+- **Vue**: `{{ }}` 는 **텍스트 출력 전용**, HTML 태그는 문자열로 표시됨
+
+**⚠️ Vue 보간의 제한사항:**
+```vue
+<template>
+  <!-- ✅ 가능: 표현식 -->
+  <p>{{ message.toUpperCase() }}</p>
+  <p>{{ count + 1 }}</p>
+  <p>{{ ok ? 'YES' : 'NO' }}</p>
+  
+  <!-- ❌ 불가능: 구문 -->
+  <p>{{ if (ok) { return message } }}</p>
+  <p>{{ let x = 1 }}</p>
+  
+  <!-- ❌ 불가능: HTML (보안상 이유) -->
+  <p>{{ '<strong>굵은글씨</strong>' }}</p> <!-- 태그가 그대로 텍스트로 출력 -->
+</template>
+```
+
+**💡 실무 팁:**
+- 복잡한 로직은 computed 속성이나 메서드로 분리하세요
+- HTML을 출력해야 할 때는 `v-html` 디렉티브 사용 (XSS 주의!)
 
 ## 🔗 속성 바인딩 (Attribute Binding)
 

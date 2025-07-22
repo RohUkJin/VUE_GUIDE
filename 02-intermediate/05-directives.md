@@ -4,6 +4,18 @@
 
 Vue의 커스텀 디렉티브는 React의 커스텀 훅과 비슷한 역할을 하지만, DOM 조작에 더 특화되어 있어요!
 
+**🎯 학습 목표**
+- React 커스텀 훅 vs Vue 커스텀 디렉티브의 차이점과 활용법 이해
+- DOM 조작이 필요한 상황에서 디렉티브의 장점 체험
+- 실무에서 자주 사용하는 디렉티브 패턴들 (lazy loading, tooltip 등) 구현
+- 재사용 가능한 UI 동작을 디렉티브로 캡슐화하는 기법 습득
+
+**💡 왜 Vue의 디렉티브가 DOM 조작에 더 좋을까요?**
+- **직접 DOM 접근**: ref 없이도 바로 DOM 요소에 접근 가능
+- **생명주기 훅**: mounted, updated, unmounted 등 세밀한 제어 가능
+- **선언적 사용**: HTML 속성처럼 자연스럽게 사용 (`v-tooltip="message"`)
+- **인자와 수식어**: `v-directive:arg.modifier` 형태로 유연한 설정 가능
+
 ## 🔧 1. 기본 개념 비교
 
 ### React 방식 (Custom Hooks)

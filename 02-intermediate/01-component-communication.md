@@ -4,6 +4,18 @@
 
 Vue와 React 모두 컴포넌트 간 데이터를 주고받는 다양한 방법을 제공합니다. Vue는 더 다양하고 편리한 통신 방법을 제공해요!
 
+**🎯 학습 목표**
+- Props Down, Events Up 패턴의 Vue vs React 차이점 이해
+- Event Bus vs React Context API 비교 및 활용법 습득
+- Provide/Inject vs React Context의 장단점 파악
+- 실무에서 적절한 통신 방법 선택하는 기준 학습
+
+**💡 왜 Vue의 컴포넌트 통신이 더 유연할까요?**
+- **다양한 선택지**: Props/Events, Event Bus, Provide/Inject 등 상황에 맞는 선택
+- **명시적 이벤트**: `$emit`으로 어떤 이벤트가 발생하는지 명확
+- **타입 안전**: Props와 Events 모두 타입 검증 지원
+- **개발자 도구**: Vue DevTools에서 이벤트 흐름 추적 가능
+
 ## 📤 1. Props Down (부모 → 자식)
 
 ### React 방식

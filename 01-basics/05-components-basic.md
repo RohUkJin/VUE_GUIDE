@@ -2,6 +2,18 @@
 
 Vue 컴포넌트는 React와 매우 유사하지만 **더 직관적인 문법**과 **강력한 기능**들을 제공합니다! 특히 **Slots**는 React의 `children`보다 훨씬 유연하고, **이벤트 시스템**도 더 명확해요.
 
+**🎯 학습 목표**
+- React 컴포넌트 vs Vue 컴포넌트의 구조적 차이점 이해
+- Props 정의 및 validation의 Vue만의 장점 파악
+- `$emit` vs React 콜백의 차이점과 각각의 장단점 이해
+- Slots의 강력함 (default, named, scoped slots) 완전 정복
+
+**💡 왜 Vue 컴포넌트가 더 직관적일까요?**
+- **명확한 구조**: Template, Script, Style이 역할별로 분리
+- **Props 타입**: 런타임에서도 타입 검증 및 기본값 설정
+- **이벤트 명시**: `emits` 옵션으로 어떤 이벤트를 발생시키는지 명확히 선언
+- **Slots**: `children`보다 훨씬 유연하고 강력한 컨텐츠 투영
+
 ## 🎯 컴포넌트 정의와 사용
 
 ### React vs Vue 컴포넌트 기본
